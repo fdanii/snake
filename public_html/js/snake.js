@@ -20,6 +20,6 @@ function gameLoop() {
 }
 
 function gameDraw () {
-     
+     context.fillStyle = "rgb(55, 222, 119)";
  }
  
