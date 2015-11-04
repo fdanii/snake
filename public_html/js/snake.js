@@ -29,7 +29,7 @@ function gameDraw () {
      context.fillRect(0, 0, screenWidth, screenHeight);
  }
 function snakeInitialize () {
-    
+    snake = [];
 } 
 function snakeDraw (){
     
