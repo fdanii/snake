@@ -30,6 +30,8 @@ function gameDraw () {
  }
 function snakeInitialize () {
     snake = [];
+    snakeLength = 15;
+    snakeSize = 20;
 } 
 function snakeDraw (){
     
