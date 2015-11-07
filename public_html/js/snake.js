@@ -65,7 +65,10 @@ function snakeUpdate() {
 }
 
 function foodInitialize() {
-    
+    food = {
+        x: 0,
+        y: 0
+    };
 }
 
 function foodDraw() {
