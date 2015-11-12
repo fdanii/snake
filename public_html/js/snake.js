@@ -37,6 +37,8 @@ function gameInitialize() {
    
    canvas.width = screenWidth;
    canvas.height = screenHeight;
+   
+   document.addEventListener("keydown", keyboardHandler);
 }
 
 function gameLoop() {
@@ -117,4 +119,8 @@ function setFoodPosition() {
     
     food.x = randomX;
     food.y = randomY;
+}
+
+function keyboardHandler(event) {
+    console.log(event);
 }
