@@ -87,6 +87,7 @@ function snakeUpdate() {
  * Food Functions
  * ----------------------------------------------------------------------------------------------------------------------
  */
+
 function foodInitialize() {
     food = {
         x: 0,
@@ -97,4 +98,9 @@ function foodInitialize() {
 function foodDraw() {
     context.fillStyle = "white";
     context.fillRect(food.x, food.y, snakeSize,  snakeSize);
+}
+
+function setFoodFunction () {
+    var randomX = Math.floor(Math.random() + screenWidth);
+    var randomY = Math.floor(Math.random() + screenHeight);
 }
