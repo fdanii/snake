@@ -83,6 +83,9 @@ function snakeUpdate() {
     if(snakeDirection == "down") {
         snakeHeadY++;
     }
+    else {
+        snakeHeadX++;
+    }
     
     var snakeTail = snake.pop();
     snakeTail.x = snakeHeadX;
