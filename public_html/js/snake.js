@@ -5,6 +5,7 @@
 var snake;
 var snakeLength;
 var snakeSize;
+var snakeDirection;
 
 var food;
 
@@ -59,6 +60,7 @@ function snakeInitialize () {
     snake = [];
     snakeLength = 5;
     snakeSize = 20;
+    snakeDirection = "down";
     
     for(var index = snakeLength - 1; index >=  0; index--){
         snake.push( {
