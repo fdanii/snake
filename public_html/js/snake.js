@@ -36,6 +36,7 @@ function gameDraw () {
      context.fillRect(0, 0, screenWidth, screenHeight);
      
  }
+ 
 function snakeInitialize () {
     snake = [];
     snakeLength = 5;
@@ -47,7 +48,8 @@ function snakeInitialize () {
           y: 0
         });
     }
-} 
+}
+
 function snakeDraw (){
     for(var index = 0; index < snake.length; index++) {
         context.fillStyle = "white";
