@@ -88,6 +88,14 @@ function snakeUpdate() {
     else if(snakeDirection == "right"){
         snakeHeadX++;
     }
+    else if(snakeDirection == "up") {
+        snakeHeadY--;
+    }
+    if(snakeDirection == "left"){
+        snakeHeadX--;
+    }
+    
+    checkFoodCollisions();
     
     var snakeTail = snake.pop();
     snakeTail.x = snakeHeadX;
@@ -133,5 +141,22 @@ function keyboardHandler(event) {
     }
     else if(event.keyCode == "40" && snakeDirection != "up") {
         snakeDirection = "down";
+    }
+    else if(event.keyCode == "37" && snakeDirection != "right") {
+        snakeDirection = "left";
+    }
+    if(event.keyCode == "38" && snakeDirection != "down") {
+        snakeDirection = "up";
+    }
+}
+
+/* --------------------------------------------------------------------------------------
+ * Collision Handling
+ * --------------------------------------------------------------------------------------
+ */
+
+function checkFoodCollisions() {
+    if(snakeHeadX == food.x && snakeHeadY == food.y) {
+        console.log("Food Collisions");
     }
 }
