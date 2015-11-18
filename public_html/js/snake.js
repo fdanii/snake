@@ -95,7 +95,7 @@ function snakeUpdate() {
         snakeHeadX--;
     }
     
-    checkFoodCollisions();
+    checkFoodCollisions(snakeHeadX, snakeHeadY);
     
     var snakeTail = snake.pop();
     snakeTail.x = snakeHeadX;
@@ -155,7 +155,7 @@ function keyboardHandler(event) {
  * --------------------------------------------------------------------------------------
  */
 
-function checkFoodCollisions() {
+function checkFoodCollisions(snakeHeadX, snakeHeadY) {
     if(snakeHeadX == food.x && snakeHeadY == food.y) {
         console.log("Food Collisions");
     }
