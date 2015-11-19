@@ -5,3 +5,7 @@ body {
 #game-screen {
     display: block;
 }
+
+#gameOver {
+    position: absolute;
+}

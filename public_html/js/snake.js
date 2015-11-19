@@ -91,7 +91,7 @@ function snakeUpdate() {
     if(snakeDirection == "down") {
         snakeHeadY++;
     }
-    else if(snakeDirection == "right"){
+    else if(snakeDirection == "right") {
         snakeHeadX++;
     }
     else if(snakeDirection == "up") {
