@@ -17,8 +17,19 @@ h1, h3 {
     font-size: 2.4em;
     color: white; 
     text-align: center;
+    margin-left: 520px;
 }
 
 .title {
-    font-size: 48px;
+    font-size: 65px;
+    margin-bottom: 0px;
+}
+
+#restartButton {
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+#restartButton:hover {
+    background-color: coral;
 }
