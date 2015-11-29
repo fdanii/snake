@@ -1,6 +1,7 @@
 /*----------------------------------------------------------------------------------------------------------------------------
  * Variables
- * ---------------------------------------------------------------------------------------------------------------------------- */
+ * ---------------------------------------------------------------------------------------------------------------------------
+ */
 
 var snake;
 var snakeLength;
@@ -13,7 +14,8 @@ var context;
 var screenWidth;
 var screenHeight; 
 
-var gameStater;
+var gameState;
+var gameOverMenu;
 
 /* ----------------------------------------------------------------------------------------------------------------------------
  * Executing Game Code
@@ -42,12 +44,14 @@ function gameInitialize() {
    
    document.addEventListener("keydown", keyboardHandler);
    
+   gameOverMenu = document.getElementById("gameOver");
+   
    setState("PLAY");
 }
 
 function gameLoop() {
     gameDraw();
-    if(gameState == "PLAY") {
+    if (gameState == "PLAY") {
         snakeUpdate();
         snakeDraw();
         foodDraw();
@@ -64,26 +68,27 @@ function gameDraw () {
   * -----------------------------------------------------------------------------------------------------------------------
   */
  
-function snakeInitialize () {
+function snakeInitialize() {
     snake = [];
     snakeLength = 1;
     snakeSize = 20;
     snakeDirection = "down";
     
-    for(var index = snakeLength - 1; index >=  0; index--){
-        snake.push( {
+    for (var index = snakeLength - 1; index >= 0; index--) {
+        snake.push({
           x: index,
           y: 0
         });
     }
 }
 
-function snakeDraw (){
-    for(var index = 0; index < snake.length; index++) {
+function snakeDraw() {
+    for (var index = 0; index < snake.length; index++) {
         context.fillStyle = "white";
         context.fillRect(snake[index].x * snakeSize, snake[index].y * snakeSize, snakeSize, snakeSize);
     }
 }
+
 function snakeUpdate() {
     var snakeHeadX = snake[0].x;
     var snakeHeadY = snake[0].y;
@@ -94,12 +99,14 @@ function snakeUpdate() {
     else if(snakeDirection == "right") {
         snakeHeadX++;
     }
-    else if(snakeDirection == "up") {
+    
+    if(snakeDirection == "up") {
         snakeHeadY--;
     }
-    if(snakeDirection == "left"){
+    else if(snakeDirection == "left"){
         snakeHeadX--;
     }
+    
     
     checkFoodCollisions(snakeHeadX, snakeHeadY);
     checkWallCollisions(snakeHeadX, snakeHeadY);
@@ -125,7 +132,7 @@ function foodInitialize() {
 
 function foodDraw() {
     context.fillStyle = "white";
-    context.fillRect(food.x * snakeSize, food.y  * snakeSize, snakeSize, snakeSize);
+    context.fillRect(food.x * snakeSize, food.y * snakeSize, snakeSize, snakeSize);
 }
 
 function setFoodPosition() {
@@ -140,6 +147,7 @@ function setFoodPosition() {
  * Input Functions 
  * -----------------------------------------------------------------------------------
  */
+
 function keyboardHandler(event) {
     console.log(event);
     
@@ -163,7 +171,7 @@ function keyboardHandler(event) {
  */
 
 function checkFoodCollisions(snakeHeadX, snakeHeadY) {
-    if(snakeHeadX == food.x && snakeHeadY == food.y) {
+    if (snakeHeadX == food.x && snakeHeadY == food.y) {
         snake.push({
             x: 0,
             y: 0
@@ -174,9 +182,9 @@ function checkFoodCollisions(snakeHeadX, snakeHeadY) {
    }  
 }
 
-function  checkWallCollisions(snakeHeadX, snakeHeadY) {
-    if(snakeHeadX * snakeSize >= screenWidth || snakeHeadX * snakeSize <0) {
-        setSize("Game Over");
+function checkWallCollisions(snakeHeadX, snakeHeadY) {
+    if (snakeHeadX * snakeSize >= screenWidth || snakeHeadX * snakeSize < 0) {
+       setState("GAME OVER");
     }
 }
 
@@ -187,4 +195,15 @@ function  checkWallCollisions(snakeHeadX, snakeHeadY) {
 
 function setState(state) {
     gameState = state;
+    showMenu(state);
+}
+
+function displayMenu(menu) {
+    menu.style.visibility = "visible";
+}
+
+function showMenu(state) {
+    if(state == "GAME OVER") {
+        displayMenu(gameOverMenu);
+    }
 }

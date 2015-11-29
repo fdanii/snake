@@ -2,10 +2,23 @@ body {
     margin: 0;
     padding: 0;
 } 
+
 #game-screen {
     display: block;
 }
 
 #gameOver {
     position: absolute;
+    visibility: hidden;
+}
+
+h1, h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.4em;
+    color: white; 
+    text-align: center;
+}
+
+.title {
+    font-size: 48px;
 }
