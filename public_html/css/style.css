@@ -14,10 +14,8 @@ body {
 
 h1, h2, h3 {
     font-family: 'Oswald', sans-serif;
-    font-size: 2.4em;
     color: white; 
     text-align: center;
-    margin-left: 50px;
 }
 
 .title {
@@ -33,4 +31,8 @@ h1, h2, h3 {
 
 #restartButton:hover {
     background-color: coral;
+}
+
+#scoreboard {
+    margin: 0px;
 }
