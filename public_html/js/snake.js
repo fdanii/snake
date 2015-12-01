@@ -18,6 +18,8 @@ var gameState;
 var gameOverMenu;
 var restartButton;
 var playHUD;
+var scoreboard;
+var welcome;
 
 /* ----------------------------------------------------------------------------------------------------------------------------
  * Executing Game Code
@@ -53,12 +55,16 @@ function gameInitialize() {
    restartButton.addEventListener("click", gameRestart);
    
    playHUD = document.getElementById("playHUD");
+   scoreboard = document.getElementById("scoreboard");
+   
+   welcome = document.getElementById("welcome");
    
    setState("PLAY");
 }
 
 function gameLoop() {
     gameDraw();
+    drawScoreboard();
     if (gameState == "PLAY") {
         snakeUpdate();
         snakeDraw();
@@ -202,6 +208,9 @@ function checkWallCollisions(snakeHeadX, snakeHeadY) {
     if (snakeHeadX * snakeSize >= screenWidth || snakeHeadX * snakeSize < 0) {
        setState("GAME OVER");
     }
+    if (snakeHeadY * snakeSize >= screenHeight || snakeHeadY * snakeSize < 0) {
+       setState("GAME OVER");
+    }
 }
 
 function  checkSnakeCollisions(snakeHeadX, snakeHeadY) {
@@ -247,4 +256,8 @@ function showMenu(state) {
 function centerMenuPosition(menu) {
     menu.style.top = (screenHeight / 2) - (menu.offsetHeight / 2) + "px";
     menu.style.left = (screenWidth / 2) - (menu.offsetWidth / 2) + "px";
+}
+
+function drawScoreboard() {
+    scoreboard.innerHTML = "Length: " + snakeLength;
 }
