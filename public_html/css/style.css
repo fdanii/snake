@@ -14,7 +14,7 @@ body {
 
 h1, h2, h3 {
     font-family: 'Oswald', sans-serif;
-    color: black; 
+    color: white; 
     text-align: center;
 }
 
@@ -24,13 +24,13 @@ h1, h2, h3 {
     margin-top: 0px;
 }
 
-#restartButton {
+#restartButton, #startButton {
     border: 2px solid white;
     border-radius: 10px;
 }
 
 #restartButton:hover {
-    background-color: coral;
+    background-color: yellow;
 }
 
 #scoreboard {
@@ -38,6 +38,16 @@ h1, h2, h3 {
 }
 
 canvas {
-    border: 5px solid coral;
+    border: 5px solid yellow;
 }
 
+#startButton {
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+#startButton:hover {
+    background-color: yellow;       
+}
