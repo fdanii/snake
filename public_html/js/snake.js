@@ -20,8 +20,12 @@ var restartButton;
 var playHUD;
 var scoreboard;
 
+var foodpic;
+var pic;
+
 var GameOver;
 var grow;
+var start;
 
 
 /* ----------------------------------------------------------------------------------------------------------------------------
@@ -65,7 +69,11 @@ function gameInitialize() {
    
    grow = new Audio("sounds/eats food.mp3");
    grow.preload = "auto";
+   
 
+   foodpic = document.getElementById("source");
+   
+   pic = document.getElementById("main");
    
    setState("PLAY");
 }
@@ -92,6 +100,7 @@ function gameDraw() {
      setState("PLAY");
      GameOver.pause();
      GameOver.play();
+     
  }
  
  /* -----------------------------------------------------------------------------------------------------------------------
@@ -115,8 +124,19 @@ function snakeInitialize() {
 
 function snakeDraw() {
     for (var index = 0; index < snake.length; index++) {
+        
+        var remainder = index % 2;
+        if (remainder === 0) {
+            context.fillStyle = "chocolate";
+        }
+        else {
+            context.fillStyle = "royalblue";
+        }
+        
         context.strokeStyle = "yellow";
         context.strokeRect(snake[index].x * snakeSize, snake[index].y * snakeSize, snakeSize, snakeSize);
+        
+        context.fillRect(snake[index].x * snakeSize, snake[index].y * snakeSize, snakeSize, snakeSize);
         context.lineWidth= 4;
 }
 }
@@ -164,8 +184,7 @@ function foodInitialize() {
 }
 
 function foodDraw() {
-    context.fillStyle = "white";
-    context.fillRect(food.x * snakeSize, food.y * snakeSize, snakeSize, snakeSize);
+    context.drawImage(foodpic, food.x * snakeSize, food.y * snakeSize, 40, 40);
 }
 
 function setFoodPosition() {
@@ -204,7 +223,11 @@ function keyboardHandler(event) {
  */
 
 function checkFoodCollisions(snakeHeadX, snakeHeadY) {
-    if (snakeHeadX == food.x && snakeHeadY == food.y) {
+    if (snakeHeadX-1 == food.x && snakeHeadY-1 == food.y || snakeHeadX+1 == food.x && snakeHeadY+1 == food.y || snakeHeadX == food.x && snakeHeadY == food.y ) {
+        snake.push({
+            x: 0,
+            y: 0
+        });
         snake.push({
             x: 0,
             y: 0

@@ -51,3 +51,7 @@ canvas {
 #startButton:hover {
     background-color: yellow;       
 }
+
+a {
+    text-decoration: none;
+}
